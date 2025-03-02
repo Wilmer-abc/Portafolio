@@ -9,10 +9,10 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
-    // Mostrar la sección correspondiente al hacer clic en un enlace del menú
+    // Mostrar la sección correspondiente al hacer clic en un enlace del menu
     navLinks.forEach(link => {
         link.addEventListener("click", function (e) {
-            e.preventDefault(); // Evitar el comportamiento predeterminado del enlace
+            e.preventDefault();
 
             // Ocultar todas las secciones
             sections.forEach(section => {
