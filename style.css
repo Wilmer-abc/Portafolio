@@ -149,3 +149,8 @@ footer {
         gap: 8px; /* Menor espacio entre elementos en móviles */
     }
 }
+
+p i {
+    margin-right: 10px;
+    color: #060606; /* Azul para LinkedIn, puedes cambiarlo */
+}
