@@ -7,35 +7,30 @@ document.addEventListener("DOMContentLoaded", function () {
     createParticles(header);
     
     // Mostrar solo la sección de inicio al cargar
-    sections.forEach(section => {
-        if (section.id !== "inicio") {
-            section.style.display = "none";
-        } else {
-            section.style.display = "block";
-            animateSection(section);
-        }
-    });
+    document.getElementById("inicio").classList.add("visible");
     
     // Navegación suave entre secciones
     navLinks.forEach(link => {
         link.addEventListener("click", function (e) {
             e.preventDefault();
             
-            // Ocultar todas las secciones
-            sections.forEach(section => {
-                section.style.display = "none";
-                section.classList.remove("visible");
-            });
-            
-            // Mostrar la sección objetivo
             const targetId = this.getAttribute("href").substring(1);
             const targetSection = document.getElementById(targetId);
             
             if (targetSection) {
-                targetSection.style.display = "block";
-                setTimeout(() => {
-                    animateSection(targetSection);
-                }, 50);
+                // Remover clase active de todos los links
+                navLinks.forEach(link => link.classList.remove("active"));
+                
+                // Agregar clase active al link clickeado
+                this.classList.add("active");
+                
+                // Ocultar todas las secciones (solo visualmente)
+                sections.forEach(section => {
+                    section.classList.remove("visible");
+                });
+                
+                // Mostrar la sección objetivo
+                targetSection.classList.add("visible");
                 
                 // Desplazamiento suave
                 window.scrollTo({
@@ -46,15 +41,24 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
     
+    
     // Animación al hacer scroll
-    function checkScroll() {
+        function checkScroll() {
         sections.forEach(section => {
             const sectionTop = section.getBoundingClientRect().top;
             const windowHeight = window.innerHeight;
             
-            if (sectionTop < windowHeight - 100 && section.style.display !== "block") {
-                section.style.display = "block";
-                animateSection(section);
+            if (sectionTop < windowHeight - 100) {
+                section.classList.add("visible");
+                
+                // Actualizar link activo
+                const id = section.getAttribute("id");
+                const correspondingLink = document.querySelector(`nav ul li a[href="#${id}"]`);
+                
+                if (correspondingLink) {
+                    navLinks.forEach(link => link.classList.remove("active"));
+                    correspondingLink.classList.add("active");
+                }
             }
         });
     }
@@ -122,4 +126,14 @@ document.addEventListener("DOMContentLoaded", function () {
             proyecto.style.setProperty("--mouse-y", `${y}px`);
         });
     });
+
+
+    });// Cerrar menú mobile al hacer click en un link (si usas menú hamburguesa)
+    navLinks.forEach(link => {
+        link.addEventListener("click", function() {
+            const navbar = document.querySelector("nav");
+            if (navbar.classList.contains("active")) {
+                navbar.classList.remove("active");
+            }
+        });
 });
