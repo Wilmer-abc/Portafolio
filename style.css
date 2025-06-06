@@ -15,6 +15,8 @@
   --gradient-php: linear-gradient(135deg, #8892be, #4f5b93);
   --gradient-node: linear-gradient(135deg, #3c873a, #68a063);
   --gradient-python: linear-gradient(135deg, #3776ab, #4b8bbe);
+  --gradient-angular: linear-gradient(135deg, #dd0031, #c73ab7);
+  --gradient-git: linear-gradient(135deg, #f14e32, #e24329);
 }
 
 /* Estilos base */
@@ -166,7 +168,7 @@ nav ul li a:hover::before {
 }
 
 /* Secciones con estilos únicos */
-section {
+/*section {
   padding: 100px 20px;
   position: relative;
   overflow: hidden;
@@ -176,6 +178,21 @@ section {
 
 section.visible {
   display: block;
+}*/
+
+section {
+    padding: 100px 20px;
+    position: relative;
+    overflow: hidden;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+    scroll-margin-top: 100px;
+}
+
+section.visible {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 .section-title {
@@ -350,11 +367,11 @@ section.visible {
     rgba(255, 255, 255, 0.1) 100%
   );
   transform: rotate(45deg);
-  transition: all 0.5s ease;
+  transition: all 1s ease;
 }
 
 .block:hover {
-  transform: translateY(-10px) scale(1.05);
+  transform: translateY(-10px) scale(1.6);
   box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
   z-index: 10;
 }
@@ -714,4 +731,46 @@ footer::before {
 .block__item span {
     font-weight: 600;
     font-size: 1.1rem;
+}
+
+/* Agrega esto a tu CSS */
+nav ul li a.active {
+    background: rgba(102, 126, 234, 0.5);
+    box-shadow: 0 0 15px rgba(102, 126, 234, 0.6);
+    transform: translateY(-3px);
+    color: #ffdd57;
+}
+
+/* Estilos para el botón de descarga */
+.download-cv {
+    background: var(--primary-gradient);
+    padding: 10px 15px;
+    border-radius: 30px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.3s ease;
+}
+
+.download-cv:hover {
+    background: var(--accent-color);
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(255, 77, 121, 0.4);
+}
+
+.download-cv i {
+    font-size: 0.9rem;
+}
+
+/* Asegúrate que el menú se adapte bien en móviles */
+@media (max-width: 768px) {
+    nav ul {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .download-cv {
+        justify-content: center;
+        margin-top: 10px;
+    }
 }
