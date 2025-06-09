@@ -75,8 +75,8 @@ header::before {
 }
 
 .foto-perfil {
-  width: 100px;
-  height: 100px;
+  width: 200px;
+  height: 200px;
   border-radius: 50%;
   object-fit: cover;
   border: 3px solid white;
@@ -465,53 +465,56 @@ section.visible {
   font-size: 0.8rem;
 }
 
-/* Sección Contacto - Estilo de formulario futurista */
-#contacto {
+#Contacto {
   background: var(--dark-bg);
   color: white;
+  padding: 60px 20px;
+  text-align: center;
 }
 
-.contacto-container {
-  max-width: 800px;
-  margin: 0 auto;
-  background: rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(10px);
-  padding: 40px;
-  border-radius: 20px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+.redes-sociales {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+  margin-top: 40px;
 }
 
-.form-group {
-  margin-bottom: 25px;
-  position: relative;
-}
-
-.form-group label {
-  display: block;
-  margin-bottom: 10px;
-  color: #fff;
-  font-weight: 500;
-}
-
-.form-group input,
-.form-group textarea {
-  width: 100%;
-  padding: 15px;
-  background: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: 10px;
+.red-social {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
   color: white;
-  font-family: 'Poppins', sans-serif;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  padding: 20px;
+  border-radius: 15px;
+  width: 120px;
   transition: all 0.3s ease;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
 }
 
-.form-group input:focus,
-.form-group textarea:focus {
-  outline: none;
-  border-color: #667eea;
-  box-shadow: 0 0 10px rgba(102, 126, 234, 0.5);
-  background: rgba(255, 255, 255, 0.15);
+.red-social:hover {
+  background: rgba(255, 255, 255, 0.1);
+  transform: translateY(-5px);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.3);
+}
+
+.red-social i {
+  font-size: 30px;
+  margin-bottom: 10px;
+  color: #667eea; /* Color acento */
+}
+
+.red-social p {
+  margin: 0;
+  font-weight: 500;
+  text-transform: capitalize;
+  color: white;
+  font-size: 14px;
 }
 
 /* Botones con efecto neón */
@@ -762,7 +765,7 @@ nav ul li a.active {
     font-size: 0.9rem;
 }
 
-/* Asegúrate que el menú se adapte bien en móviles */
+/*  menú se adapte bien en móviles */
 @media (max-width: 768px) {
     nav ul {
         flex-direction: column;
