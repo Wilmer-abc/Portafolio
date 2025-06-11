@@ -137,3 +137,11 @@ document.addEventListener("DOMContentLoaded", function () {
             }
         });
 });
+
+document.querySelector('.download-cv').addEventListener('click', function(e) {
+    e.preventDefault();
+    window.open(
+        'https://drive.google.com/uc?export=download&id=1UOaHp0XB3R8EvK6cUF1PGbhE6rPPseAX',
+        '_blank'
+    );
+});
