@@ -777,3 +777,31 @@ nav ul li a.active {
         margin-top: 10px;
     }
 }
+
+
+/* Efecto de cursor parpadeante */
+#typing-effect::after {
+    content: '|';
+    animation: blink 1s step-end infinite;
+    margin-left: 2px;
+    color: #000; /* Asegura que sea visible */
+}
+
+@keyframes blink {
+    from, to { opacity: 1; }
+    50% { opacity: 0; }
+}
+
+/* Estilos para el texto */
+#typing-effect {
+    border-right: 2px solid #000; /* Cursor adicional como respaldo */
+    display: inline-block; /* Necesario para que el cursor se posicione bien */
+    min-width: 1px; /* Evita que colapse cuando está vacío */
+}
+
+#inicio h2 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    min-height: 60px;
+    overflow: hidden; /* Contiene el cursor */
+}
