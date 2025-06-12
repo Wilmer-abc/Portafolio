@@ -1,15 +1,24 @@
 document.addEventListener("DOMContentLoaded", function () {
+    // Elementos del DOM
     const navLinks = document.querySelectorAll("nav ul li a");
     const sections = document.querySelectorAll("section");
     const header = document.querySelector("header");
+    const typingElement = document.getElementById("typing-effect");
     
-    // Efecto de partículas en el header
+    // 1. Efecto de partículas en el header
     createParticles(header);
     
-    // Mostrar solo la sección de inicio al cargar
+    // 2. Mostrar solo la sección de inicio al cargar
     document.getElementById("inicio").classList.add("visible");
     
-    // Navegación suave entre secciones
+    // 3. Efecto de máquina de escribir
+    if (typingElement) {
+        initTypeWriterEffect();
+    } else {
+        console.warn('Elemento typing-effect no encontrado');
+    }
+    
+    // 4. Navegación suave entre secciones
     navLinks.forEach(link => {
         link.addEventListener("click", function (e) {
             e.preventDefault();
@@ -41,9 +50,8 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
     
-    
-    // Animación al hacer scroll
-        function checkScroll() {
+    // 5. Animación al hacer scroll
+    function checkScroll() {
         sections.forEach(section => {
             const sectionTop = section.getBoundingClientRect().top;
             const windowHeight = window.innerHeight;
@@ -66,82 +74,73 @@ document.addEventListener("DOMContentLoaded", function () {
     window.addEventListener("scroll", checkScroll);
     checkScroll(); // Verificar al cargar
     
-    // Animación para una sección
-    function animateSection(section) {
-        section.classList.add("visible");
-        
-        // Animación específica para habilidades
-        if (section.id === "habilidades") {
-            const blocks = section.querySelectorAll(".block");
-            blocks.forEach((block, index) => {
-                setTimeout(() => {
-                    block.style.opacity = "1";
-                    block.style.transform = "translateY(0)";
-                }, 100 * index);
-            });
-        }
-    }
-    
-    // Efecto de partículas
-    function createParticles(container) {
-        const particleCount = 30;
-        
-        for (let i = 0; i < particleCount; i++) {
-            const particle = document.createElement("div");
-            particle.classList.add("particle");
-            
-            // Posición aleatoria
-            const posX = Math.random() * 100;
-            const posY = Math.random() * 100;
-            
-            // Tamaño aleatorio
-            const size = Math.random() * 5 + 1;
-            
-            // Duración de animación aleatoria
-            const duration = Math.random() * 20 + 10;
-            const delay = Math.random() * 5;
-            
-            // Estilo de la partícula
-            particle.style.left = `${posX}%`;
-            particle.style.top = `${posY}%`;
-            particle.style.width = `${size}px`;
-            particle.style.height = `${size}px`;
-            particle.style.background = `rgba(102, 126, 234, ${Math.random() * 0.5 + 0.1})`;
-            particle.style.animationDuration = `${duration}s`;
-            particle.style.animationDelay = `${delay}s`;
-            
-            container.appendChild(particle);
-        }
-    }
-    
-    // Efecto hover en proyectos
-    const proyectos = document.querySelectorAll(".proyecto");
-    proyectos.forEach(proyecto => {
-        proyecto.addEventListener("mousemove", (e) => {
-            const rect = proyecto.getBoundingClientRect();
-            const x = e.clientX - rect.left;
-            const y = e.clientY - rect.top;
-            
-            proyecto.style.setProperty("--mouse-x", `${x}px`);
-            proyecto.style.setProperty("--mouse-y", `${y}px`);
+    // 6. Efecto de descarga CV
+    const downloadBtn = document.querySelector('.download-cv');
+    if (downloadBtn) {
+        downloadBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            window.open(
+                'https://drive.google.com/uc?export=download&id=1UOaHp0XB3R8EvK6cUF1PGbhE6rPPseAX',
+                '_blank'
+            );
         });
-    });
-
-
-    });// Cerrar menú mobile al hacer click en un link (si usas menú hamburguesa)
+    }
+    
+    // 7. Cerrar menú mobile al hacer click en un link
     navLinks.forEach(link => {
         link.addEventListener("click", function() {
             const navbar = document.querySelector("nav");
-            if (navbar.classList.contains("active")) {
+            if (navbar && navbar.classList.contains("active")) {
                 navbar.classList.remove("active");
             }
         });
-});
+    });
 
-document.querySelector('.download-cv').addEventListener('click', function(e) {
-    e.preventDefault();
-    window.open(
-        'https://drive.google.com/uc?export=download&id=1UOaHp0XB3R8EvK6cUF1PGbhE6rPPseAX',
-        '_blank'
-    );
+    // Funciones auxiliares
+    function initTypeWriterEffect() {
+        const texts = [
+            "Bienvenido a mi Portafolio",
+            "Hola, soy Wilmer Batz",
+            "Desarrollador Web Jr"
+        ];
+        
+        let textIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+        let typingTimeout;
+        
+        function typeWriter() {
+            const currentText = texts[textIndex];
+            
+            clearTimeout(typingTimeout);
+            
+            if (isDeleting) {
+                typingElement.textContent = currentText.substring(0, charIndex - 1);
+                charIndex--;
+            } else {
+                typingElement.textContent = currentText.substring(0, charIndex + 1);
+                charIndex++;
+            }
+            
+            if (!isDeleting && charIndex === currentText.length) {
+                isDeleting = true;
+                typingTimeout = setTimeout(typeWriter, 2000);
+            } else if (isDeleting && charIndex === 0) {
+                isDeleting = false;
+                textIndex = (textIndex + 1) % texts.length;
+                typingTimeout = setTimeout(typeWriter, 100);
+            } else {
+                typingTimeout = setTimeout(
+                    typeWriter, 
+                    isDeleting ? 50 : 100
+                );
+            }
+        }
+        
+        typeWriter();
+    }
+
+    function createParticles(container) {
+        // ... (mantén tu código existente de partículas)
+    }
 });
