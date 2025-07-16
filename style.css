@@ -17,6 +17,7 @@
   --gradient-python: linear-gradient(135deg, #3776ab, #4b8bbe);
   --gradient-angular: linear-gradient(135deg, #dd0031, #c73ab7);
   --gradient-git: linear-gradient(135deg, #f14e32, #e24329);
+  --gradient-PowerBI: linear-gradient(135deg, #f8f8f8, #000000);
 }
 
 /* Estilos base */
@@ -37,7 +38,7 @@ body {
   flex-direction: column;
 }
 
-/* Header futurista */
+/* Header futurista */ 
 header {
   background: var(--dark-bg);
   color: white;
