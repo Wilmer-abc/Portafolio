@@ -80,7 +80,7 @@ document.addEventListener("DOMContentLoaded", function () {
         downloadBtn.addEventListener('click', function(e) {
             e.preventDefault();
             window.open(
-                'https://drive.google.com/uc?export=download&id=1UOaHp0XB3R8EvK6cUF1PGbhE6rPPseAX',
+                'https://drive.google.com/file/d/1nyaUPBPAnChNqFalZRX4x7bBzhVE63GW/view?usp=sharing',
                 '_blank'
             );
         });
@@ -99,9 +99,9 @@ document.addEventListener("DOMContentLoaded", function () {
     // Funciones auxiliares
     function initTypeWriterEffect() {
         const texts = [
-            "Bienvenido a mi Portafolio",
             "Hola, soy Wilmer Batz",
-            "Desarrollador Web Jr"
+            "Desarrollador Web Jr",
+            "Bienvenido a mi Portafolio"
         ];
         
         let textIndex = 0;
