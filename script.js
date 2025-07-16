@@ -141,6 +141,5 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     function createParticles(container) {
-        // ... (mantén tu código existente de partículas)
     }
 });
