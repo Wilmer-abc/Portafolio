@@ -9,6 +9,7 @@
   --gradient-html: linear-gradient(135deg, #e44d26, #f16529);
   --gradient-css: linear-gradient(135deg, #264de4, #2965f1);
   --gradient-js: linear-gradient(135deg, #f7df1e, #f0db4f);
+  --gradient-ts: linear-gradient(135deg, #3178c6, #3178c6);
   --gradient-mysql: linear-gradient(135deg, #00758f, #00bfa5);
   --gradient-sql: linear-gradient(135deg, #008080, #00ced1);
   --gradient-github: linear-gradient(135deg, #333, #6e5494);
@@ -18,8 +19,9 @@
   --gradient-angular: linear-gradient(135deg, #dd0031, #c73ab7);
   --gradient-git: linear-gradient(135deg, #f14e32, #e24329);
   --gradient-PowerBI: linear-gradient(135deg, #f8f8f8, #000000);
-}
+  --gradient-figma: linear-gradient(135deg, #f24e1e, #a259ff);
 
+}
 /* Estilos base */
 html {
   scroll-behavior: smooth;
